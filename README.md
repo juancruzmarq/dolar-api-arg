@@ -1,6 +1,6 @@
-### API de Cotizacion de Dolar en Argentina
+# API de Cotizacion de Dolar en Argentina
 
-#### Descripcion
+## Descripcion
 
 Este proyecto es una API que permite obtener la cotizacion del dolar en Argentina de distintas fuentes.
 
@@ -8,7 +8,7 @@ Este proyecto es una API que permite obtener la cotizacion del dolar en Argentin
 **Dolar Hoy**: https://www.dolarhoy.com/
 **La Nacion**: https://www.lanacion.com.ar
 
-#### Instalacion
+## Instalacion
 
 Para instalar el proyecto se debe realizar lo siguiente:
 
