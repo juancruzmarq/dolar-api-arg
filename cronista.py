@@ -26,13 +26,16 @@ class Cronista(Scrapper):
         'sell': oficial[1]
       },
       'turista': {
-        'sell': turista
+        'buy': turista[0],
+        'sell': turista[1]
       },
       'mep': {
-        'sell': mep
+        'buy': mep[0],
+        'sell': mep[1]
       },
       'ccl': {
-        'sell': ccl
+        'buy': ccl[0],
+        'sell': ccl[1]
       }
     }
 
