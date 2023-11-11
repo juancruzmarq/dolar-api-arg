@@ -8,17 +8,20 @@ class DolarGetter():
     self.dolarHoy = DolarHoy(URLS['DOLARHOY'])
     self.cronista = Cronista(URLS['CRONISTA'])
     self.la_nacion = LaNacion(URLS['LANACION'])
-
+    
   def get_all(self):
-    dolarHoy = self.dolarHoy.get_all()
-    cronista = self.cronista.get_all()
-    la_nacion = self.la_nacion.get_all()
+    try:
+      dolarHoy = self.dolarHoy.get_all()
+      cronista = self.cronista.get_all()
+      la_nacion = self.la_nacion.get_all()
 
-    return {
-      'dolar_hoy': dolarHoy,
-      'cronista': cronista,
-      'la_nacion': la_nacion
-    }
+      return {
+        'dolar_hoy': dolarHoy,
+        'cronista': cronista,
+        'la_nacion': la_nacion
+      }
+    except:
+      return None
 
   def get_blue(self):
     dolarHoyBlue = self.dolarHoy.get_dolar_blue()

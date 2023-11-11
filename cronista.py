@@ -3,10 +3,11 @@ from utils import parseValue
 
 class Cronista(Scrapper):
   def __init__(self, url) -> None:
+    super().__init__(url)
     self.url = url
     self.soup = self.get_soup()
     self.html = self.get_html()
-    self.table_dolar_values = self.get_table_dolar()
+    self.table_dolar_values= self.get_table_dolar()
     pass
 
   def get_all(self):
@@ -39,20 +40,24 @@ class Cronista(Scrapper):
       }
     }
 
-    
-
   def get_table_dolar(self):
-    table = self.soup.find('table', {'id': 'market-scrll-2'})
-    rows = table.find_all('tr')
-    dolar_values = {}
-    for row in rows:
-      cells = row.find_all('td')
-      if cells:
-        dolar_type = cells[0].get_text(strip=True).lower().split(' ')[1]
-        buy_value = float(cells[1].find('div', class_='buy-value').get_text(strip=True).replace('$', '').replace(',', '.'))
-        sell_value = float(cells[2].find('div', class_='sell-value').get_text(strip=True).replace('$', '').replace(',', '.'))
-        dolar_values[dolar_type] = {'Compra': buy_value, 'Venta': sell_value}
-    return dolar_values
+    try:
+      print(self.soup)
+      table = self.soup.find('table', {'id': 'market-scrll-2'})
+      print(table)
+      rows = table.find_all('tr')
+      dolar_values = {}
+      for row in rows:
+        cells = row.find_all('td')
+        if cells:
+          dolar_type = cells[0].get_text(strip=True).lower().split(' ')[1]
+          buy_value = float(cells[1].find('div', class_='buy-value').get_text(strip=True).replace('$', '').replace(',', '.'))
+          sell_value = float(cells[2].find('div', class_='sell-value').get_text(strip=True).replace('$', '').replace(',', '.'))
+          dolar_values[dolar_type] = {'Compra': buy_value, 'Venta': sell_value}
+      return dolar_values
+    except:
+      return None
+
 
   def get_dolar_blue(self):
     buy_value = self.table_dolar_values['blue']['Compra']

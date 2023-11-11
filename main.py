@@ -14,7 +14,7 @@ async def root(dolar_getter: DolarGetter = Depends(get_dolar_getter)):
     try:
       all = dolar_getter.get_all()
       return all
-    except:
+    except Exception as e:
       raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Error al obtener los valores del dolar")
 
 @app.get("/oficial")
